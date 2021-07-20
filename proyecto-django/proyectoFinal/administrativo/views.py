@@ -23,6 +23,41 @@ from administrativo.models import *
 from administrativo.forms import *
 
 # Create your views here.
+def index(request):
+    """
+        Listar los registros del modelo Estudiante,
+        obtenidos de la base de datos.
+    """
+    # a través del ORM de django se obtiene
+    # los registros de la entidad; el listado obtenido
+    # se lo almacena en una variable llamada
+    # edificio
+    #edificio = Edificio.objects.all()
+    # en la variable tipo diccionario llamada informacion_template
+    # se agregará la información que estará disponible
+    # en el template
+    #informacion_template = {'edificio': edificio, 'numero_edificio': len(edificio)}
+    #return render(request, 'index.html', informacion_template)
+    return render(request, 'index.html')
+
+
+def crearDepartamento(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = DepartamentoForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = DepartamentoForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crearDepartamento.html', diccionario)
+
+
+
 
 # crear vistas a través de viewsets
 class UserViewSet(viewsets.ModelViewSet):
