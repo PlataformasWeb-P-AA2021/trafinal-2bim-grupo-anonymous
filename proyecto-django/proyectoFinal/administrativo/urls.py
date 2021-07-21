@@ -20,4 +20,7 @@ urlpatterns = [
         # url Persona
         path('crearPersona', views.crearPersona, name='crearPersona'),
 
+        # Ingreso/Salida del sistema
+        path('saliendo/logout/', views.logout_view, name="logout_view"),
+        path('entrando/login/', views.ingreso, name="login"),
  ]

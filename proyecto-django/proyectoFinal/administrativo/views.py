@@ -106,6 +106,30 @@ def crearPersona(request):
 
     return render(request, 'crearPersona.html', diccionario)
 
+# Login del sistema
+def ingreso(request):
+
+    if request.method == "POST":
+        form = AuthenticationForm(request=request, data=request.POST)
+        print(form.errors)
+        if form.is_valid():
+            username = form.data.get("username")
+            raw_password = form.data.get("password")
+            user = authenticate(username=username, password=raw_password)
+            if user is not None:
+                login(request, user)
+                return redirect(index)
+    else:
+        form = AuthenticationForm()
+
+    informacion_template = {'form': form}
+    return render(request, 'login.html', informacion_template)
+
+# logout del sistema
+def logout_view(request):
+    logout(request)
+    messages.info(request, "Has salido del sistema")
+    return redirect(index)
 
 
 
