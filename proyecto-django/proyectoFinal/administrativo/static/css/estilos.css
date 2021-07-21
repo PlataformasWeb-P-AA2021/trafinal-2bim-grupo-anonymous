@@ -1,0 +1,98 @@
+/* manejo de las características de la etiqueta body*/
+
+body {
+    /*background: #FEFEFD;*/
+    background: white;
+    padding: 10px;
+  
+  }
+  
+  header {
+    background: white;
+    color: black;
+    padding: 1em;
+  }
+  /* manejo de las características de la etiqueta table*/
+  th, td {
+    padding: 15px;
+    border-bottom: 1px solid black;
+  }
+  
+  tr:hover {
+    background-color: #258EAD;
+  }
+  
+  input[type=text], input[type=number] {
+    width: 25%;
+    padding: 5px 5px;
+    box-sizing: border-box;
+  }
+  
+  input[type=text || type=number]:focus {
+    border: 3px solid blue;
+  }
+  
+  label {
+    padding: 12px 10px;
+  }
+  /* manejo de las características de las clases*/
+  
+  .colorceldsprintfa{
+    background: #9999FF;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .miformulario{
+    width: 40%;
+  }
+  
+  
+  /*Menu */
+  /*
+   Tomado de http://codigoprogramacion.com/cursos/html/como-hacer-un-menu-horizontal-con-html5-y-css3.html
+   */
+  .top_menu ul
+  {
+    list-style:none;
+    float:left;
+    padding: 5px;
+    width:95%;
+  }
+  
+  .top_menu ul li
+  {
+    float:left;
+    margin-right:10px;
+    margin-bottom:5px;
+  
+  }
+  
+  footer{
+    background-color: #3498DB;
+    color: #FFF;
+  }
+
+  .img{
+      width: 30%;
+      padding-left: 8em;
+      display: inline-block;
+  }
+
+  .img img{
+      width: auto;
+  }
+
+  .text{
+      width: 40%;
+      display: inline-block;
+      padding-left: 1em;
+  }
+
+  .info{
+      padding: 3em;
+      width: 80%;
+      margin: auto;
+  }
