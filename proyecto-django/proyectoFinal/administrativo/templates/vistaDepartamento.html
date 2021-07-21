@@ -1,0 +1,54 @@
+{% extends "master.html" %}
+
+{% block title %}
+    Vista Departamento
+{% endblock %}
+
+{% block content %}
+
+<h3>Número de Departamentos {{ numero_departamento }}</h3>
+
+<table id="tabla_datos">
+
+  <thead>
+    <tr>
+      <th>Propietario</th>
+      <th>Dirección</th>
+      <th>Barrio</th>
+      <th>Valor del bien</th>
+      <th>Nr de Cuartos</th>
+      <th>Valor mensual de mantenimiento</th>
+      <th>Opciones</th>
+
+    </tr>
+  </thead>
+
+  {% for d in departamento %}
+  <tr>
+    <td> {{d.propietario}}</td>
+    <td> {{d.direccion}}</td>
+    <td> {{d.barrio}}</td>
+    <td> {{d.valorBien}}</td>
+    <td> {{d.nroCuartos}}</td>
+    <td> {{d.valorMantenimiento}}</td>
+    <td>
+      <button type="button" class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href="{% url 'editar_departamento' d.id %}">Editar</a>
+      </button>
+      <button type="button" class="btn btn-danger">
+        <a style="text-decoration: none; color: white;" href="{% url 'eliminar_departamento' d.id %}" 
+        onclick="return confirm('¿Está seguro de la eliminación?')" >Eliminar</a>
+      </button>
+      
+  </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+
+{% endblock %}

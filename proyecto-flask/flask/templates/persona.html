@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Persona</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>
+    <h5>Listado de personas - {{numero_personas}}</h5>
+
+    {% for c in personas %}
+
+    <ol>
+      <li><b>Nombre: </b>{{c['nombre']}}</li>
+      <li><b>Apellido: </b>{{c['apellido']}}</li>
+      <li><b>Cedula: </b>{{c['cedula']}}</li>
+      <li><b>Corre: </b>{{c['correo']}}</li>
+    </ol>
+    <hr>
+    {% endfor%}
+    <button type="button" class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href="http://localhost:5000/">Inicio</a>
+    </button> 
+  </body>  
+</html>

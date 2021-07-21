@@ -10,11 +10,9 @@ class Persona(models.Model):
     correo = models.EmailField(max_length=30)
 
     def __str__(self):
-        return "%s %s - %s - %s" % (
+        return "%s %s" % (
             self.nombre,
             self.apellido,
-            self.cedula,
-            self.correo
             )                      
 
 class Barrio(models.Model):
@@ -22,9 +20,8 @@ class Barrio(models.Model):
     siglas = models.CharField("Siglas del barrio", max_length=10)
 
     def __str__(self):
-        return "%s %s" % (
-            self.nombre,
-            self.siglas)
+        return "%s" % (
+            self.nombre,)
 
 class Casa(models.Model):
     propietario = models.ForeignKey(Persona, on_delete=models.CASCADE, 
@@ -35,13 +32,15 @@ class Casa(models.Model):
             related_name="barriosCasa")
 
     valorBien = models.DecimalField("Valor de la casa", max_digits=10, decimal_places=2)
+    colorInmueble = models.CharField("Color del Inmueble", max_length=100)
     nroCuartos = models.IntegerField("Número de cuartos")
     nroPisos = models.IntegerField("Número de pisos")
 
     def __str__(self):
-        return "%s - %f - %d - %d" % (
+        return "%s - %f - %s - %d - %d" % (
             self.direccion,
             self.valorBien,
+            self.colorInmueble,
             self.nroCuartos,
             self.nroPisos
             )

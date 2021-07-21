@@ -22,7 +22,7 @@ from administrativo.models import *
 # importar los formularios de forms.py
 from administrativo.forms import *
 
-# Create your views here.
+# Vista de Casa
 def index(request):
     """
         Listar los registros del modelo Estudiante,
@@ -32,13 +32,31 @@ def index(request):
     # los registros de la entidad; el listado obtenido
     # se lo almacena en una variable llamada
     # edificio
-    #edificio = Edificio.objects.all()
+    casa = Casa.objects.all()
     # en la variable tipo diccionario llamada informacion_template
     # se agregará la información que estará disponible
     # en el template
-    #informacion_template = {'edificio': edificio, 'numero_edificio': len(edificio)}
-    #return render(request, 'index.html', informacion_template)
-    return render(request, 'index.html')
+    informacion_template = {'casa': casa, 'numero_casa': len(casa)}
+    return render(request, 'index.html', informacion_template)
+
+# Vista de Departamento
+def vistaDepartamento(request):
+    """
+        Listar los registros del modelo Estudiante,
+        obtenidos de la base de datos.
+    """
+    # a través del ORM de django se obtiene
+    # los registros de la entidad; el listado obtenido
+    # se lo almacena en una variable llamada
+    # edificio
+    departamento = Departamento.objects.all()
+    # en la variable tipo diccionario llamada informacion_template
+    # se agregará la información que estará disponible
+    # en el template
+    informacion_template = {'departamento': departamento, 'numero_departamento': len(departamento)}
+    return render(request, 'vistaDepartamento.html', informacion_template)
+
+
 
 # Casa
 def crearCasa(request):
@@ -55,6 +73,29 @@ def crearCasa(request):
     diccionario = {'formulario': formulario}
 
     return render(request, 'crearCasa.html', diccionario)
+
+def editar_casa(request, id):
+    """
+    """
+    casa = Casa.objects.get(pk=id)
+    if request.method=='POST':
+        formulario = CasaForm(request.POST, instance=casa)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(index)
+    else:
+        formulario = CasaForm(instance=casa)
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'editarCasa.html', diccionario)
+
+def eliminar_casa(request, id):
+    """
+    """
+    casa = Casa.objects.get(pk=id)
+    casa.delete()
+    return redirect(index)
 
 
 
@@ -73,6 +114,30 @@ def crearDepartamento(request):
     diccionario = {'formulario': formulario}
 
     return render(request, 'crearDepartamento.html', diccionario)
+
+def editar_departamento(request, id):
+    """
+    """
+    departamento = Departamento.objects.get(pk=id)
+    if request.method=='POST':
+        formulario = DepartamentoForm(request.POST, instance=departamento)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(vistaDepartamento)
+    else:
+        formulario = DepartamentoForm(instance=departamento)
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'editarDepartamento.html', diccionario)
+
+def eliminar_departamento(request, id):
+    """
+    """
+    departamento = Departamento.objects.get(pk=id)
+    departamento.delete()
+    return redirect(vistaDepartamento)
+
 
 # Barrio
 def crearBarrio(request):

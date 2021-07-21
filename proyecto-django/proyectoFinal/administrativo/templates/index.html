@@ -6,5 +6,52 @@
 
 {% block content %}
 
-Hola mundo
+<h3>Número de Casas {{ numero_casa }}</h3>
+
+<table id="tabla_datos">
+
+  <thead>
+    <tr>
+      <th>Propietario</th>
+      <th>Dirección</th>
+      <th>Barrio</th>
+      <th>Valor de bien</th>
+      <th>Color del inmueble</th>
+      <th>Nr de Cuartos</th>
+      <th>Nr de Pisos</th>
+      <th>Opciones</th>
+
+    </tr>
+  </thead>
+
+  {% for c in casa %}
+  <tr>
+    <td> {{c.propietario}}</td>
+    <td> {{c.direccion}}</td>
+    <td> {{c.barrio}}</td>
+    <td> {{c.valorBien}}</td>
+    <td> {{c.colorInmueble}}</td>
+    <td> {{c.nroCuartos}}</td>
+    <td> {{c.nroPisos}}</td>
+    <td>
+        <button type="button" class="btn btn-primary">
+            <a style="text-decoration: none; color: white;" href="{% url 'editar_casa' c.id %}">Editar</a>
+        </button>
+        <button type="button" class="btn btn-danger">
+            <a style="text-decoration: none; color: white;" href="{% url 'eliminar_casa' c.id %}" 
+            onclick="return confirm('¿Está seguro de la eliminación?')" >Eliminar</a>
+        </button>
+
+        
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+
 {% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Departamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>
+    <h5>Listado de Departamentos - {{numero}}</h5>
+
+    {% for e in datos %}
+    <ol>
+      <li><b>Propietario: </b>{{e['propietario']}}</li>
+      <li><b>Dirección: </b>{{e['direccion']}}</li>
+      <li><b>Barrio: </b>{{e['barrio']}}</li>
+      <li><b>Valor del bien: </b>{{e['valorBien']}}</li>
+      <li><b>Nr Cuartos: </b>{{e['nroCuartos']}}</li>
+      <li><b>Valor de Mantenimiento: </b>{{e['valorMantenimiento']}}</li>
+    </ol>
+    <hr>
+    {% endfor%}
+    <button type="button" class="btn btn-primary">
+      <a style="text-decoration: none; color: white;" href="http://localhost:5000/">Inicio</a>
+    </button> 
+  </body>
+</html>
