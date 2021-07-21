@@ -40,7 +40,25 @@ def index(request):
     #return render(request, 'index.html', informacion_template)
     return render(request, 'index.html')
 
+# Casa
+def crearCasa(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = CasaForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = CasaForm()
+    diccionario = {'formulario': formulario}
 
+    return render(request, 'crearCasa.html', diccionario)
+
+
+
+# Departamento
 def crearDepartamento(request):
     """
     """
