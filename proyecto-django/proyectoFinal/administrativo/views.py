@@ -40,7 +40,25 @@ def index(request):
     #return render(request, 'index.html', informacion_template)
     return render(request, 'index.html')
 
+# Casa
+def crearCasa(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = CasaForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = CasaForm()
+    diccionario = {'formulario': formulario}
 
+    return render(request, 'crearCasa.html', diccionario)
+
+
+
+# Departamento
 def crearDepartamento(request):
     """
     """
@@ -55,6 +73,41 @@ def crearDepartamento(request):
     diccionario = {'formulario': formulario}
 
     return render(request, 'crearDepartamento.html', diccionario)
+
+# Barrio
+def crearBarrio(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = BarrioForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = BarrioForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crearBarrio.html', diccionario)
+
+# Persona
+def crearPersona(request):
+    """
+    """
+    if request.method=='POST':
+        formulario = PersonaForm(request.POST)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save() # se guarda en la base de datos
+            return redirect(index)
+    else:
+        formulario = PersonaForm()
+    diccionario = {'formulario': formulario}
+
+    return render(request, 'crearPersona.html', diccionario)
+
+
+
 
 
 
