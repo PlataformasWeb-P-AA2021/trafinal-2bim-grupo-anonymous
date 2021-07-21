@@ -74,6 +74,7 @@ def crearCasa(request):
 
     return render(request, 'crearCasa.html', diccionario)
 
+@permission_required('administrativo.change_casa   ', login_url="/entrando/login/")
 def editar_casa(request, id):
     """
     """
@@ -90,6 +91,7 @@ def editar_casa(request, id):
 
     return render(request, 'editarCasa.html', diccionario)
 
+@permission_required('administrativo.delete_casa', login_url="/entrando/login/")
 def eliminar_casa(request, id):
     """
     """
@@ -115,6 +117,7 @@ def crearDepartamento(request):
 
     return render(request, 'crearDepartamento.html', diccionario)
 
+@permission_required('administrativo.change_departamento', login_url="/entrando/login/")
 def editar_departamento(request, id):
     """
     """
@@ -131,6 +134,7 @@ def editar_departamento(request, id):
 
     return render(request, 'editarDepartamento.html', diccionario)
 
+@permission_required('administrativo.delete_departamento', login_url="/entrando/login/")
 def eliminar_departamento(request, id):
     """
     """
@@ -139,37 +143,7 @@ def eliminar_departamento(request, id):
     return redirect(vistaDepartamento)
 
 
-# Barrio
-def crearBarrio(request):
-    """
-    """
-    if request.method=='POST':
-        formulario = BarrioForm(request.POST)
-        print(formulario.errors)
-        if formulario.is_valid():
-            formulario.save() # se guarda en la base de datos
-            return redirect(index)
-    else:
-        formulario = BarrioForm()
-    diccionario = {'formulario': formulario}
 
-    return render(request, 'crearBarrio.html', diccionario)
-
-# Persona
-def crearPersona(request):
-    """
-    """
-    if request.method=='POST':
-        formulario = PersonaForm(request.POST)
-        print(formulario.errors)
-        if formulario.is_valid():
-            formulario.save() # se guarda en la base de datos
-            return redirect(index)
-    else:
-        formulario = PersonaForm()
-    diccionario = {'formulario': formulario}
-
-    return render(request, 'crearPersona.html', diccionario)
 
 # Login del sistema
 def ingreso(request):

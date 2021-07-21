@@ -21,11 +21,6 @@ urlpatterns = [
         path('eliminar_departamento/<int:id>', views.eliminar_departamento, 
             name='eliminar_departamento'),
         
-        # url Barrio
-        path('crearBarrio', views.crearBarrio, name='crearBarrio'),
-
-        # url Persona
-        path('crearPersona', views.crearPersona, name='crearPersona'),
 
         # Ingreso/Salida del sistema
         path('saliendo/logout/', views.logout_view, name="logout_view"),
