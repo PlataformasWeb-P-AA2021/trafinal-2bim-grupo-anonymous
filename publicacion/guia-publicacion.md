@@ -20,7 +20,9 @@
 
 * __Paso 1__: Instalación de Unicorn 
 
-`sudo apt-get install unicorn`
+```
+sudo apt-get install unicorn
+```
 
 * __Paso 2__: Instalación del servidor Nginx
 
